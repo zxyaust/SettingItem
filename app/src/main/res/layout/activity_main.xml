@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.z.setitemdemo.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击第一个item有惊喜哦,多点击试试看" />
+
+    <com.z.settingitemlib.SettingItem
+        android:id="@+id/set1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:left_image="@mipmap/icon_complete"
+        app:left_text="版本检查"
+        app:right_text="检查新版本"
+        app:tag_text="new"
+        app:tag_text_marginRight="5dp" />
+
+    <com.z.settingitemlib.SettingItem
+        android:id="@+id/set2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:left_image="@mipmap/icon_complete"
+        app:left_image_height="44dp"
+        app:left_image_width="44dp"
+        app:left_text="消息"
+        app:right_text="有新消息"
+        app:tag_text="99+"
+        app:tag_text_bg_color="#c0c"
+        app:tag_text_color="#0f0" />
+
+    <com.z.settingitemlib.SettingItem
+        android:id="@+id/set3"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:left_image="@mipmap/icon_message"
+        app:left_text="活动"
+        app:left_text_color="#f33"
+        app:right_image="@mipmap/icon_arrow_right"
+        app:show_dot="true" />
+
+    <com.z.settingitemlib.SettingItem
+        android:id="@+id/set4"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:left_text="设置"
+        app:right_image="@mipmap/icon_arrow_right"
+        app:tag_text_visible="false" />
+
+    <com.z.settingitemlib.SettingItem
+        android:id="@+id/set5"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        app:left_image="@mipmap/icon_complete"
+        app:left_text="设置"
+        app:right_image="@mipmap/icon_arrow_right"
+        app:tag_text_visible="false" />
+</LinearLayout>

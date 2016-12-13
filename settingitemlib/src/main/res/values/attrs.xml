@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingItem">
+        <!--左边image-->
+        <attr name="left_image" format="reference"></attr>
+        <attr name="left_image_width" format="dimension"></attr>
+        <attr name="left_image_height" format="dimension"></attr>
+        <attr name="left_image_marginRight" format="dimension"></attr>
+        <!--左边text-->
+        <attr name="left_text" format="string"></attr>
+        <attr name="left_text_size" format="dimension"></attr>
+        <attr name="left_text_color" format="color"></attr>
+        <!--tag-->
+        <attr name="show_dot" format="boolean"></attr>
+        <attr name="tag_text_visible" format="boolean"></attr>
+        <attr name="tag_text" format="string"></attr>
+        <attr name="tag_text_size" format="dimension"></attr>
+        <attr name="tag_text_color" format="color"></attr>
+        <attr name="tag_text_bg_color" format="color"></attr>
+        <attr name="tag_text_marginRight" format="dimension"></attr>
+        <!--右边text-->
+        <attr name="right_text" format="string"></attr>
+        <attr name="right_text_size" format="dimension"></attr>
+        <attr name="right_text_color" format="color"></attr>
+        <!--右边image-->
+        <attr name="right_image" format="reference"></attr>
+        <attr name="right_image_width" format="dimension"></attr>
+        <attr name="right_image_height" format="dimension"></attr>
+        <attr name="right_image_marginLeft" format="dimension"></attr>
+    </declare-styleable>
+</resources>
