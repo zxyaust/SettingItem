@@ -5,7 +5,7 @@
 #1.用法及原理
 gradle引用
 ```
-compile 'com.z:SettingItem:1.0.0'
+compile 'com.z:SettingItem:2.0'
 ```
     内部的各个组件:左边的text,imageview,右边的textview,imageview以及tag都是public的,在代码中可以找到随便用随便设置,增加了使用的灵活性,但如果不是不得已,不建议这样使用,因为自定义属性完全可以控制所有的布局显示.
 #2.属性和方法
@@ -15,7 +15,7 @@ compile 'com.z:SettingItem:1.0.0'
 <resources>
     <declare-styleable name="SettingItem">
         <!--左边image-->
-        <attr name="left_image" format="reference"></attr>//drawableId
+        <attr name="left_image" format="reference"></attr>
         <attr name="left_image_width" format="dimension"></attr>
         <attr name="left_image_height" format="dimension"></attr>
         <attr name="left_image_marginRight" format="dimension"></attr>
@@ -25,6 +25,8 @@ compile 'com.z:SettingItem:1.0.0'
         <attr name="left_text_color" format="color"></attr>
         <!--tag-->
         <attr name="show_dot" format="boolean"></attr>
+        <attr name="dotSize" format="dimension"></attr>
+        <attr name="dotColor" format="color"></attr>
         <attr name="tag_text_visible" format="boolean"></attr>
         <attr name="tag_text" format="string"></attr>
         <attr name="tag_text_size" format="dimension"></attr>
@@ -44,6 +46,7 @@ compile 'com.z:SettingItem:1.0.0'
 </resources>
 ```
 ##2.方法
+```
 setTagBg(int color)//设置tag的背景颜色
 
 setTagText(String s)//设置tag的文字,会自动让tag显示出来
@@ -51,9 +54,18 @@ setTagText(String s)//设置tag的文字,会自动让tag显示出来
 void showDot()//显示dot
 
 void removeTagAndDot()//去掉tag和dot
+//下面两个方法调用之后要再showDot一次才可以出效果
+ public void setDotSize(int dotSize) {
+        this.dotSize = dotSize;
+    }
 
+    public void setDotColor(int dotColor) {
+        this.dotColor = dotColor;
+    }
+```
 #3.注意
-    dot和tag本质是同一个textview,showdot属性为true时,tag的文本会自动消失,同样tagVisible属性为false的时候showdot为true也没有用的
+    dot和tag本质是同一个textview,showdot属性为true时,tag的文本会自动消失,同样tagVisible属性为false的时候showdot为true也没有用的,
+    所以dot和tag的设置时互斥的
 #4.自定义控件中get到的技能
         1.textview的settextSize方法中用的是sp值,但通过array.getDimension方法获取的值是px值,所以需要转换才能使用
         2.getDimensionPixelOffset和getDimensionPixelOffset相同,但第一个返回int值,第二个返回float值,返回值都是px值,即使你设置的是dp值或者sp值,他都会转换成px值,平时用这两个方法就好了,另一个方法不好用,不说了
