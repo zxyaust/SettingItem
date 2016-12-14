@@ -1,14 +1,17 @@
 apply plugin: 'com.android.library'
-
+//发布到bintray配置
+apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
-
+    lintOptions {
+        abortOnError false
+    }
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 14
+         targetSdkVersion 25
+        versionCode 9
+        versionName "1.9"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -28,4 +31,17 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
+}
+publish {
+    userOrg = 'zxyaust'
+    groupId = 'com.z'
+    artifactId = 'SettingItem'
+    publishVersion = '2.0'
+    desc = 'quick to create Setting items'
+    website = 'https://github.com/zxyaust/SettingItem'
+}
+//有时需要app下面的gradle也配置此项,发生错误是不停止,这样才可以
+//发布到bintray
+task Javadoc(type: Javadoc) {
+    options.encoding = "utf-8"
 }

@@ -42,6 +42,8 @@
         android:layout_height="44dp"
         app:left_image="@mipmap/icon_message"
         app:left_text="活动"
+        app:dotSize="15dp"
+        app:dotColor="@color/colorPrimaryDark"
         app:left_text_color="#f33"
         app:right_image="@mipmap/icon_arrow_right"
         app:show_dot="true" />

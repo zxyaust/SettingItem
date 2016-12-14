@@ -11,8 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/magin_right"
-        android:gravity="center_vertical"
-        />
+        android:gravity="center_vertical" />
 
     <TextView
         android:id="@+id/tv_left"
@@ -31,8 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/magin_right"
-        android:gravity="center_vertical"
-       />
+        android:gravity="center_vertical" />
 
     <TextView
         android:id="@+id/tv_right"
@@ -55,10 +53,10 @@
         android:layout_toLeftOf="@id/tv_right"
         android:background="@drawable/shape_tag_bg"
         android:gravity="center"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
         android:text="1"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_m" />
+        />
 
 </RelativeLayout>

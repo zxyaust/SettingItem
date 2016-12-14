@@ -3,9 +3,12 @@ package com.z.settingitemlib;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.Shape;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -49,10 +52,13 @@ public class SettingItem extends LinearLayout {
     private String tagString;
     private boolean tagVisible = true;
     private boolean showDot = false;
-    private float tagTextSize = sp2px(9);
+    private int dotSize = dip2px(6);
+    private int dotColor = getResources().getColor(R.color.red1);
+    private float tagTextSize = sp2px(12);
     private int tagTextColor = getResources().getColor(R.color.white);
     private int tagTextBg = getResources().getColor(R.color.red1);
     private int tagMarginRight = dip2px(5);
+    private RelativeLayout.LayoutParams tagLayoutParams;
 
 
     public SettingItem(Context context) {
@@ -125,6 +131,8 @@ public class SettingItem extends LinearLayout {
         tagString = array.getString(R.styleable.SettingItem_tag_text);
         tagVisible = array.getBoolean(R.styleable.SettingItem_tag_text_visible, tagVisible);
         showDot = array.getBoolean(R.styleable.SettingItem_show_dot, showDot);
+        dotSize = array.getDimensionPixelSize(R.styleable.SettingItem_dotSize, dotSize);
+        dotColor = array.getColor(R.styleable.SettingItem_dotColor, dotColor);
         tagTextSize = array.getDimension(R.styleable.SettingItem_tag_text_size, tagTextSize);
         tagTextColor = array.getColor(R.styleable.SettingItem_tag_text_color, tagTextColor);
         tagTextBg = array.getColor(R.styleable.SettingItem_tag_text_bg_color, tagTextBg);
@@ -155,21 +163,30 @@ public class SettingItem extends LinearLayout {
         rightImageParams.leftMargin = rightImageMarginLeft;
         rightImage.setLayoutParams(rightImageParams);
         //
-        tag.setText(tagString);
-        tag.setVisibility(tagVisible ? VISIBLE : GONE);
-        tag.setTextSize(tagTextSize);
+
         tag.setTextColor(tagTextColor);
         setTagBg(tagTextBg);
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tag.getLayoutParams();
-        layoutParams.rightMargin = tagMarginRight;
-        tag.setLayoutParams(layoutParams);
-        showDot();
+        tagLayoutParams = (RelativeLayout.LayoutParams) tag.getLayoutParams();
+        tagLayoutParams.rightMargin = tagMarginRight;
+        tag.setLayoutParams(tagLayoutParams);
+        tag.setVisibility(tagVisible ? VISIBLE : GONE);
+        if (showDot)//如果显示dot,就显示,否则不显示
+            showDot();
+        else {
+            tag.setText(tagString);
+            tag.setTextSize(px2sp(tagTextSize));
+        }
     }
 
     public void setTagText(String s) {
         tag.setVisibility(VISIBLE);
         tag.setText(s);
-        tag.setTextSize(tagTextSize);
+        setTagBg(tagTextBg);
+        tag.setTextSize(px2sp(tagTextSize));
+        tagLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        tagLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        tag.setLayoutParams(tagLayoutParams);
+        tag.setPadding(dip2px(4), 0, dip2px(4), 0);
     }
 
     public void removeTagAndDot() {
@@ -178,8 +195,19 @@ public class SettingItem extends LinearLayout {
 
     public void showDot() {
         tag.setVisibility(VISIBLE);
-        tag.setText(" ");
-        tag.setTextSize(1);
+        tag.setText("");
+        setTagBg(dotColor);
+        tagLayoutParams.height = dotSize;
+        tagLayoutParams.width = dotSize;
+        tag.setLayoutParams(tagLayoutParams);
+    }
+
+    public void setDotSize(int dotSize) {
+        this.dotSize = dotSize;
+    }
+
+    public void setDotColor(int dotColor) {
+        this.dotColor = dotColor;
     }
 
     public void setTagBg(int color) {

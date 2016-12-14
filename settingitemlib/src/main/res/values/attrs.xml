@@ -12,6 +12,8 @@
         <attr name="left_text_color" format="color"></attr>
         <!--tag-->
         <attr name="show_dot" format="boolean"></attr>
+        <attr name="dotSize" format="dimension"></attr>
+        <attr name="dotColor" format="color"></attr>
         <attr name="tag_text_visible" format="boolean"></attr>
         <attr name="tag_text" format="string"></attr>
         <attr name="tag_text_size" format="dimension"></attr>
