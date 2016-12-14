@@ -45,9 +45,13 @@ compile 'com.z:SettingItem:1.0.0'
 ```
 ##2.方法
 setTagBg(int color)//设置tag的背景颜色
+
 setTagText(String s)//设置tag的文字,会自动让tag显示出来
+
 void showDot()//显示dot
+
 void removeTagAndDot()//去掉tag和dot
+
 #3.注意
     dot和tag本质是同一个textview,showdot属性为true时,tag的文本会自动消失,同样tagVisible属性为false的时候showdot为true也没有用的
 #4.自定义控件中get到的技能
